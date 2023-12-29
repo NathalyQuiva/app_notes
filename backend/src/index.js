@@ -1,18 +1,25 @@
 import app from './app.js'
 import { sequelize } from './database/database.js'
+import cors from 'cors'
 
-// import './models/Category.js'
-// import './models/Note.js'
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 //Setting
 app.set('port', process.env.PORT || 3006);   
-// app.set('json spaces', 2);
-
-
-// //Routes
-// app.use(require('./routes/index'));
-// app.use('/api/categories', require('./routes/categories.js'));
-
 
 //Starting database and server
 async function main() {

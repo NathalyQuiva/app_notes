@@ -1,0 +1,146 @@
+import axios from 'axios';
+
+export const GET_ALL_CATEGORIES = 'GET_ALL_CATEGORIES';
+export const GET_ALL_NOTES = 'GET_ALL_NOTES';
+export const GET_NOTES_BY_CATEGORY = 'GET_NOTES_BY_CATEGORY';
+export const GET_STATE_NOTES = 'GET_STATE_NOTES';
+export const EMPTY_ARRAY = 'EMPTY_ARRAY';
+export const EDIT_NOTE = 'EDIT_NOTE';
+export const CHANGE_STATUS = 'CHANGE_STATUS';
+
+
+export function getAllCategories() {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get('http://localhost:3006/api/categories')
+            return dispatch({
+                type: GET_ALL_CATEGORIES,
+                payload: res.data
+            })
+        } catch (error) {
+            return dispatch({
+                type: GET_ALL_CATEGORIES,
+                payload: error
+            })
+        }
+    }
+}
+
+
+export function getAllNotes() {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get('http://localhost:3006/api/notes')
+            return dispatch({
+                type: GET_ALL_NOTES,
+                payload: res.data
+            })
+        } catch (error) {
+            return dispatch({
+                type: GET_ALL_NOTES,
+                payload: error
+            })
+        }
+    }
+}
+
+
+export function createNote({ tittle, content, categoryId }) {
+    return async function () {
+        const res = (await axios.post('http://localhost:3006/api/notes', { tittle, content, categoryId })).data
+    }
+}
+
+
+export function deleteNote(id) {
+    return async function (dispatch) {
+        const res = (await axios.delete((`http://localhost:3006/api/notes/${id}`)))
+    }
+}
+
+
+export function searchByCategory(catId) {
+    return async function (dispatch) {
+        try {
+            const res = (await axios.get((`http://localhost:3006/api/categories/${catId}/notes`))).data
+            return dispatch({
+                type: GET_NOTES_BY_CATEGORY,
+                payload: res
+            })
+        } catch (error) {
+            return dispatch({
+                type: GET_NOTES_BY_CATEGORY,
+                payload: error
+            })
+        }
+    }
+}
+
+
+export function notesActives(boolean) {
+    return async function (dispatch) {
+        try {
+            const booleanValue = JSON.parse(boolean);
+            const notes = (await axios.get(('http://localhost:3006/api/notes'))).data
+            const stateNotes = notes.filter(note => note.active === booleanValue);
+            return dispatch({
+                type: GET_STATE_NOTES,
+                payload: stateNotes
+            })
+        } catch (error) {
+            return dispatch({
+                type: GET_STATE_NOTES,
+                payload: error
+            })
+        }
+    }
+}
+
+
+export function emptyNotes() {
+    return function (dispatch) {
+        const data = [];
+        return dispatch({
+            type: EMPTY_ARRAY,
+            payload: data
+        })
+    }
+}
+
+
+export function updateNote({id, tittle, content}) {
+    return async function (dispatch) {
+    const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), {tittle, content})).data
+    } 
+}
+
+export function editNote(id) {
+    return async function (dispatch) {
+        const edit= 'yes';
+        return dispatch({
+            type: EDIT_NOTE,
+            payload: id
+        }
+    )}
+}
+
+
+export function changeStatus(id, activeBoolean) {
+    return async function (dispatch) {
+        try {
+            const parseActive = JSON.parse(activeBoolean);
+            const active = !parseActive;
+            const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), {active})).data
+            return dispatch({
+                type: CHANGE_STATUS,
+                payload: id})
+        } catch (error) {
+            return dispatch({
+                type: GET_STATE_NOTES,
+                payload: error
+            })
+        }
+    }
+}
+       
+        

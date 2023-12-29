@@ -16,12 +16,3 @@ export const sequelize = new Sequelize(
 );
 
 
-// export const sequelize = new Sequelize(
-//     'notes', 
-//     'postgres', 
-//     'Iz08082022', 
-//     {
-//         host: 'localhost',
-//         dialect: 'postgres'
-//     }
-// );

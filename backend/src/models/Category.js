@@ -6,7 +6,7 @@ export const Category = sequelize.define('categories', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        autoIncrement: true 
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING
@@ -23,10 +23,10 @@ export const Category = sequelize.define('categories', {
 Category.hasMany(Note, {
     foreignKey: 'categoryId',
     sourceKey: 'id'
-})
+});
 
 Note.belongsTo(Category, {
     foreignKey: 'categoryId',
     targetId: 'id'
-})
+});
 

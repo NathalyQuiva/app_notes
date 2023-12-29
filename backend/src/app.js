@@ -5,7 +5,6 @@ import notesRoutes from './routes/notes.routes.js';
 const app = express();
 
 //Middleware 
-// //app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 app.use('/api/categories', categoriesRoutes);
