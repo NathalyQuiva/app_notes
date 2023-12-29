@@ -12,8 +12,7 @@ const SearchBar = () => {
   }, [dispatch]);
 
   function handleSelect(event) {
-    const catId = event.target.value
-    console.log(catId)
+    const catId = event.target.value;
     dispatch(searchByCategory(catId))
   }
 
@@ -57,14 +56,14 @@ const SearchBar = () => {
       <label style={labelStyle}>Archive/Unarchive Notes:</label>
       <select onChange={handleArchive} style={selectStyle}>
         {/* <option >Select</option> */}
-        <option value="false" >Archive Notes</option>
-        <option value="true">Unarchive Notes</option>
+        <option value="false" >Archived Notes</option>
+        <option value="true">Actives Notes</option>
       </select>
 
       <label style={labelStyle}>Filter Notes by Category:</label>
-      <select onChange={handleSelect}>
+      <select onChange={handleSelect} style={selectStyle}>
         {categories.map(category => (
-          <option key={category.id} value={category.id}>
+          <option key={category.id} name={category.name} value={category.id}>
             {category.name}
           </option>
         ))

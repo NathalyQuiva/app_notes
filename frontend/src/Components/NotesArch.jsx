@@ -7,6 +7,8 @@ const NotesArch = () => {
   const dispatch = useDispatch();
   const [showCompo, setshowCompo] = useState(true);
   const note = useSelector((state) => state.notesArcOrUnär);
+  
+  const booleanStatus = (note[0].active)
 
   useEffect(() => {
     return () => { };
@@ -34,6 +36,14 @@ const NotesArch = () => {
     color: '#333',
   };
 
+  const tagStyle = {
+    fontFamily: 'Georgia, serif',
+    color: '#333',
+    fontSize: '27px',
+    fontWeight: 'bold',
+    textAlign: 'center', 
+  };
+
   const noteBoxStyle = {
     border: '1px solid #ddd',
     borderRadius: '8px',
@@ -52,13 +62,15 @@ const NotesArch = () => {
 
   return (
     <div style={containerStyle}>
+      {booleanStatus === true && <h1 style={noteBoxStyle} >Active Notes</h1>}
+      {booleanStatus === false && <h1 style={noteBoxStyle}>Archived Notes</h1>}
       {note.map(note => (
-        <div key={note.id} style={noteBoxStyle}>
+        <div key={note.id} name= {note.id} style={noteBoxStyle}>
           <h3>{note.tittle}</h3>
           <p>{note.content}</p>
         </div>
       ))}
-      <button style={closeButtonStyle} onClick={handleCerrarClick}>CLOSE LIST</button>
+      {/* <button style={closeButtonStyle} onClick={handleCerrarClick}>CLOSE LIST</button> */}
     </div>
   );
 }

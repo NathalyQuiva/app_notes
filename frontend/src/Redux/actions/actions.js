@@ -47,100 +47,128 @@ export function getAllNotes() {
 
 export function createNote({ tittle, content, categoryId }) {
     return async function () {
-        const res = (await axios.post('http://localhost:3006/api/notes', { tittle, content, categoryId })).data
-    }
+        try {
+            const res = await axios.post('http://localhost:3006/api/notes', { tittle, content, categoryId });
+            alert('The note was created successfully. Click SEE ALL NOTE to see your updated list.');
+        } catch (error) {
+            alert('There was an error creating the note. Please try again.');
+            throw error;
+        }
+    };
 }
-
 
 export function deleteNote(id) {
     return async function (dispatch) {
-        const res = (await axios.delete((`http://localhost:3006/api/notes/${id}`)))
-    }
+        try {
+            const res = await axios.delete(`http://localhost:3006/api/notes/${id}`);
+            alert('The note was deleted successfully. Click SEE ALL NOTE to see your updated list.');
+
+        } catch (error) {
+            alert('There was an error deleting the note. Please try again.');
+            throw error;
+        }
+    };
 }
 
 
 export function searchByCategory(catId) {
     return async function (dispatch) {
         try {
-            const res = (await axios.get((`http://localhost:3006/api/categories/${catId}/notes`))).data
+            const notes = (await axios.get((`http://localhost:3006/api/categories/${catId}/notes`))).data
             return dispatch({
                 type: GET_NOTES_BY_CATEGORY,
-                payload: res
+                payload: notes
             })
+
         } catch (error) {
             return dispatch({
                 type: GET_NOTES_BY_CATEGORY,
                 payload: error
             })
+        }}
+    }
+
+
+
+    export function notesActives(boolean) {
+        return async function (dispatch) {
+            try {
+                console.log(boolean)
+                const booleanValue = JSON.parse(boolean);
+                const notes = (await axios.get(('http://localhost:3006/api/notes'))).data
+                const stateNotes = notes.filter(note => note.active === booleanValue);
+                return dispatch({
+                    type: GET_STATE_NOTES,
+                    payload: stateNotes
+                })
+            } catch (error) {
+                return dispatch({
+                    type: GET_STATE_NOTES,
+                    payload: error
+                })
+            }
         }
     }
-}
 
 
-export function notesActives(boolean) {
-    return async function (dispatch) {
-        try {
-            const booleanValue = JSON.parse(boolean);
-            const notes = (await axios.get(('http://localhost:3006/api/notes'))).data
-            const stateNotes = notes.filter(note => note.active === booleanValue);
+    export function emptyNotes() {
+        return function (dispatch) {
+            const data = [];
             return dispatch({
-                type: GET_STATE_NOTES,
-                payload: stateNotes
-            })
-        } catch (error) {
-            return dispatch({
-                type: GET_STATE_NOTES,
-                payload: error
-            })
-        }
-    }
-}
-
-
-export function emptyNotes() {
-    return function (dispatch) {
-        const data = [];
-        return dispatch({
-            type: EMPTY_ARRAY,
-            payload: data
-        })
-    }
-}
-
-
-export function updateNote({id, tittle, content}) {
-    return async function (dispatch) {
-    const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), {tittle, content})).data
-    } 
-}
-
-export function editNote(id) {
-    return async function (dispatch) {
-        const edit= 'yes';
-        return dispatch({
-            type: EDIT_NOTE,
-            payload: id
-        }
-    )}
-}
-
-
-export function changeStatus(id, activeBoolean) {
-    return async function (dispatch) {
-        try {
-            const parseActive = JSON.parse(activeBoolean);
-            const active = !parseActive;
-            const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), {active})).data
-            return dispatch({
-                type: CHANGE_STATUS,
-                payload: id})
-        } catch (error) {
-            return dispatch({
-                type: GET_STATE_NOTES,
-                payload: error
+                type: EMPTY_ARRAY,
+                payload: data
             })
         }
     }
-}
-       
-        
+
+
+    export function updateNote({ id, tittle, content }) {
+        return async function (dispatch) {
+            try {
+                const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { tittle, content })).data
+                alert('The note was edited successfully. Click SEE ALL NOTE to see your updated list.');
+            } catch (error) {
+                alert('There was an error editing the note. Please try again.');
+                throw error;
+            }
+        }
+    }
+
+
+    export function editNote(id) {
+        return async function (dispatch) {
+            const edit = 'yes';
+            return dispatch({
+                type: EDIT_NOTE,
+                payload: id
+            }
+            )
+        }
+    }
+
+
+    export function changeStatus(id, activeBoolean) {
+        return async function (dispatch) {
+            try {
+                const parseActive = JSON.parse(activeBoolean);
+                const active = !parseActive;
+                const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { active })).data
+                if (active === true) {
+                    alert('This note has been actived or unarchived.');
+                } else {
+                    alert('This note has been archived.');
+                }
+                return dispatch({
+                    type: CHANGE_STATUS,
+                    payload: id
+                })
+            } catch (error) {
+                return dispatch({
+                    type: CHANGE_STATUS,
+                    payload: error
+                })
+            }
+        }
+    }
+
+

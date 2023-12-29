@@ -6,6 +6,11 @@ const NotesByCategory = () => {
   const dispatch = useDispatch();
   const [showCompo, setshowCompo] = useState(true);
   const notesOfCategory = useSelector((state) => state.notesOfCategory);
+  const categories = useSelector((state) => state.categories);
+console.log(notesOfCategory)
+  const catId = notesOfCategory[0].categoryId;
+
+  const categoryName = (categories.find(cat => cat.id == catId)).name
 
   useEffect(() => {
     return () => { };
@@ -51,13 +56,13 @@ const NotesByCategory = () => {
 
   return (
     <div style={containerStyle}>
-      {notesOfCategory.map(note => (
-        <div key={note.id} style={noteBoxStyle}>
+      <h1>{`${categoryName} Notes`}</h1>
+      {notesOfCategory.map(note=> (
+        <div key={note.id} name= {note.title} style={noteBoxStyle}>
           <h3>{note.tittle}</h3>
           <p>{note.content}</p>
         </div>
       ))}
-      <button style={closeButtonStyle} onClick={handleCerrarClick}>CLOSE LIST</button>
     </div>
   );
 }

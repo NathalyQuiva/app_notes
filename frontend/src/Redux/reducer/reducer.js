@@ -30,23 +30,25 @@ const rootReducer = (state = initialState, action) => {
         case GET_NOTES_BY_CATEGORY:
             return {
                 ...state,
-                notesOfCategory: action.payload
+                notesOfCategory: action.payload,
+                notesArcOrUnär: []
             }
         case GET_STATE_NOTES:
             return {
                 ...state,
-                notesArcOrUnär: action.payload
+                notesArcOrUnär: action.payload,
+                notesOfCategory: []
             }
-            case EMPTY_ARRAY:
-                return {
-                    ...state,
-                    notes: action.payload
-                }
-            case EDIT_NOTE:
-                return {
-                    ...state,
-                    editNote: action.payload
-                }
+        case EMPTY_ARRAY:
+            return {
+                ...state,
+                notes: action.payload
+            }
+        case EDIT_NOTE:
+            return {
+                ...state,
+                editNote: action.payload
+            }
 
         default:
             return state

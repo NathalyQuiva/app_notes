@@ -6,6 +6,7 @@ import { getAllCategories, createNote, updateNote } from "../Redux/actions/actio
 const EditForm = () => {
     const dispatch = useDispatch();
     const editNote = useSelector((state) => state.editNote);
+    const [error, setError] = useState('');
     
     const [noteInformation, setNoteInformation] = useState({
         id: editNote,
@@ -17,12 +18,18 @@ const EditForm = () => {
         setNoteInformation({
             ...noteInformation,
             [event.target.name]: event.target.value
-        })
+        });
+        setError('');
     }
 
 
     function onSubmit(event) {
         event.preventDefault();
+        if (!noteInformation.tittle) {
+            setError('El campo "Title" no puede estar vacío.');
+            return;
+          }
+
         setNoteInformation({
             id: editNote,
             tittle: "",
@@ -63,9 +70,10 @@ const EditForm = () => {
         <div style={formContainerStyle}>
             <h2 style={formHeaderStyle}>EDIT NOTE</h2>
             <form style={formStyle} onSubmit={onSubmit}>
-                <label htmlFor="tittle">Tittle:</label>
+                <label htmlFor="tittle">Title:</label>
                 <input id="tittle" type="text" name="tittle" value={noteInformation.tittle}
-                    onChange={handleChange} required />
+                    onChange={handleChange}/>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
 
                 <label htmlFor="content">Description:</label>
                 <input id="content" type="text" name="content" value={noteInformation.content}

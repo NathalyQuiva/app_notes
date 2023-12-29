@@ -76,7 +76,7 @@ const Form = () => {
     <div style={formContainerStyle}>
       <h2 style={formHeaderStyle}>CREATE NOTE</h2>
       <form style={formStyle} onSubmit={onSubmit}>
-        <label htmlFor="tittle">Tittle:</label>
+        <label htmlFor="tittle">Title:</label>
         <input id="tittle" type="text" name="tittle" value={noteInformation.tittle}
           onChange={handleChange} required/>
 

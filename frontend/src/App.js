@@ -52,10 +52,10 @@ function App() {
         {noteArc.length > 0 && <NotesArch />}
         {notesCat.length > 0 && <NotesByCategory />}
         <div style={centeredButton}>
-          <button style={buttonStyle} onClick={handleToggle}>SEE ALL NOTES</button>
+          <button style={buttonStyle} onClick={handleToggle}>SEE ALL NOTES</button> 
         </div>
         {toggle && <NotesList />}
-      </div>
+        </div>
       <Form />
       <Footer />
     </div>
