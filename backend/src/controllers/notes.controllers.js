@@ -26,13 +26,14 @@ export const createNote = async (req, res) => {
 export const editNote = async (req, res) => {
     try {
         const { id } = req.params;
-        const { tittle, content, done, active } = req.body;
+        const { tittle, content, done, active, categoryId} = req.body;
 
         const note = await Note.findByPk(id);
         note.tittle = tittle;
         note.content = content;
         note.done = done;
         note.active = active;
+        note.categoryId = categoryId;
         await note.save();
 
         res.json(note);

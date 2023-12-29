@@ -7,11 +7,12 @@ const NotesByCategory = () => {
   const [showCompo, setshowCompo] = useState(true);
   const notesOfCategory = useSelector((state) => state.notesOfCategory);
   const categories = useSelector((state) => state.categories);
-console.log(notesOfCategory)
+
   const catId = notesOfCategory[0].categoryId;
 
   const categoryName = (categories.find(cat => cat.id == catId)).name
 
+ 
   useEffect(() => {
     return () => { };
   }, [dispatch]);

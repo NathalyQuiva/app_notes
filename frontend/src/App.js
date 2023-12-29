@@ -8,14 +8,20 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import NotesByCategory from './Components/NotesByCategoryList';
 import NotesArch from './Components/NotesArch';
+import Login from './Components/Log';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const notesCat = useSelector((state) => state.notesOfCategory);
   const noteArc = useSelector((state) => state.notesArcOrUnär);
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
     setToggle(!toggle)
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
   };
 
   const appStyle = {
@@ -43,6 +49,10 @@ function App() {
     display: 'flex',
     justifyContent: 'center'
   };
+
+  if (!isLoggedIn) {
+    return <Login onLogin={handleLogin} />;
+  }
 
   return (
     <div className="App" style={appStyle}>

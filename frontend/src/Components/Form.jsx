@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllCategories, createNote } from "../Redux/actions/actions";
-
+import validation from '../Validation/Validation'
 
 const Form = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
+  const [error, setError] = useState('');
 
   const [noteInformation, setNoteInformation] = useState({
     tittle: "",
@@ -22,6 +23,7 @@ const Form = () => {
       ...noteInformation,
       [event.target.name]: event.target.value
     })
+    setError('');
   }
 
   function handleSelect(event){
@@ -36,6 +38,10 @@ const Form = () => {
 
   function onSubmit(event) {
     event.preventDefault();
+        if (!noteInformation.tittle) {
+            setError('The "Title" field cannot be empty.');
+            return;
+        }
     dispatch(createNote(noteInformation));
     setNoteInformation({
       tittle: "",
@@ -78,7 +84,9 @@ const Form = () => {
       <form style={formStyle} onSubmit={onSubmit}>
         <label htmlFor="tittle">Title:</label>
         <input id="tittle" type="text" name="tittle" value={noteInformation.tittle}
-          onChange={handleChange} required/>
+          onChange={handleChange} />
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+
 
         <label htmlFor="content">Description:</label>
         <input id="content" type="text" name="content" value={noteInformation.content}

@@ -122,10 +122,10 @@ export function searchByCategory(catId) {
     }
 
 
-    export function updateNote({ id, tittle, content }) {
+    export function updateNote({ id, tittle, content, categoryId}) {
         return async function (dispatch) {
             try {
-                const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { tittle, content })).data
+                const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { tittle, content, categoryId})).data
                 alert('The note was edited successfully. Click SEE ALL NOTE to see your updated list.');
             } catch (error) {
                 alert('There was an error editing the note. Please try again.');

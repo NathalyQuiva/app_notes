@@ -5,14 +5,21 @@ import { getAllCategories, createNote, updateNote } from "../Redux/actions/actio
 
 const EditForm = () => {
     const dispatch = useDispatch();
+    const categories = useSelector((state) => state.categories);
     const editNote = useSelector((state) => state.editNote);
     const [error, setError] = useState('');
+
     
     const [noteInformation, setNoteInformation] = useState({
         id: editNote,
         tittle: "",
-        content: ""
+        content: "",
+        categoryId: ""
     })
+
+    useEffect(() => {
+        dispatch(getAllCategories())
+      }, [dispatch]);
 
     function handleChange(event) {
         setNoteInformation({
@@ -22,18 +29,27 @@ const EditForm = () => {
         setError('');
     }
 
+    function handleSelect(event){
+        handleChange(event);
+        setNoteInformation(
+          {
+           ...noteInformation,
+           categoryId:event.target.value
+          }
+        )
+      }
 
     function onSubmit(event) {
         event.preventDefault();
         if (!noteInformation.tittle) {
-            setError('El campo "Title" no puede estar vacío.');
+            setError('The "Title" field cannot be empty.');
             return;
-          }
-
+        }
         setNoteInformation({
             id: editNote,
             tittle: "",
-            content: ""
+            content: "",
+            categoryId: ""
         })
         dispatch(updateNote(noteInformation));
     }
@@ -72,12 +88,25 @@ const EditForm = () => {
             <form style={formStyle} onSubmit={onSubmit}>
                 <label htmlFor="tittle">Title:</label>
                 <input id="tittle" type="text" name="tittle" value={noteInformation.tittle}
-                    onChange={handleChange}/>
+                    onChange={handleChange} />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
                 <label htmlFor="content">Description:</label>
                 <input id="content" type="text" name="content" value={noteInformation.content}
                     onChange={handleChange} required />
+
+                <label>
+                    New note category:
+                    <select onChange={handleSelect}>
+                        {categories.map(category => (
+                            <option key={category.id} value={category.id}>
+                                {category.name}
+                            </option>
+                        ))
+                        }
+                    </select>
+                </label>
+
                 <button onClick={onSubmit}>Edit Note</button>
             </form>
         </div>

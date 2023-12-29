@@ -10,6 +10,8 @@ const Notes = () => {
   const notes = useSelector(state => state.notes);
   const [showCompo, setshowCompo] = useState(true);
   const [editNoteId, setEditNoteId] = useState(null);
+  const categories = useSelector((state) => state.categories);
+
 
   function editHandle(event) {
     const id = event.target.value;
@@ -86,6 +88,7 @@ const Notes = () => {
         <div key={note.id} style={noteBoxStyle}>
           <h3>{note.tittle}</h3>
           <p>{note.content}</p>
+          <p>Category: {categories.find(cat => cat.id === note.categoryId)?.name}</p>
           {note.active == true && <p>Status: Unarchive</p>}
           <div style={buttonContainerStyle}>
             {!editNoteId && <button name={note.id} value={`${note.id} ${note.active}`} style={buttonStyle} onClick={statusHandle}>CHANGE STATUS</button>}

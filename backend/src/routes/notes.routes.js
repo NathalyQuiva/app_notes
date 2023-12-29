@@ -16,7 +16,6 @@ router.get('/', getNotes);
 router.get('/active', getNotesActive);
 router.get('/archived', getNotesArchived);
 router.put('/reverseActive/:id', doActiveOrArchived);
-
 router.post('/', createNote);
 router.put('/:id', editNote);
 router.delete('/:id', deleteNote);
