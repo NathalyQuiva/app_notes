@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Añadir la ruta de psql al PATH
-export PATH=$PATH:"/c/Program Files/PostgreSQL/15/bin"
+export PATH=$PATH:"/c/Program Files/PostgreSQL/15/bin/psql"
 
 # Añadir la ruta de node al PATH
 export PATH=$PATH:"/c/Program Files/nodejs"
