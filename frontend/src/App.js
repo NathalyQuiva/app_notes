@@ -10,16 +10,13 @@ import NotesByCategory from './Components/NotesByCategoryList';
 import NotesArch from './Components/NotesArch';
 import Login from './Components/Log';
 
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const notesCat = useSelector((state) => state.notesOfCategory);
   const noteArc = useSelector((state) => state.notesArcOrUnär);
-  const [toggle, setToggle] = useState(false);
-
-  const handleToggle = () => {
-    setToggle(!toggle)
-  };
-
+  const toggleNew= useSelector((state) => state.toggleNew);
+  
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
@@ -61,10 +58,7 @@ function App() {
         <SearchBar />
         {noteArc.length > 0 && <NotesArch />}
         {notesCat.length > 0 && <NotesByCategory />}
-        <div style={centeredButton}>
-          <button style={buttonStyle} onClick={handleToggle}>SEE ALL NOTES</button> 
-        </div>
-        {toggle && <NotesList />}
+        {toggleNew === true && <NotesList />}
         </div>
       <Form />
       <Footer />

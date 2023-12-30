@@ -7,6 +7,7 @@ export const GET_STATE_NOTES = 'GET_STATE_NOTES';
 export const EMPTY_ARRAY = 'EMPTY_ARRAY';
 export const EDIT_NOTE = 'EDIT_NOTE';
 export const CHANGE_STATUS = 'CHANGE_STATUS';
+export const RENDER_NOTES = 'RENDER_NOTES';
 
 
 export function getAllCategories() {
@@ -57,6 +58,7 @@ export function createNote({ tittle, content, categoryId }) {
     };
 }
 
+
 export function deleteNote(id) {
     return async function (dispatch) {
         try {
@@ -85,90 +87,101 @@ export function searchByCategory(catId) {
                 type: GET_NOTES_BY_CATEGORY,
                 payload: error
             })
-        }}
-    }
-
-
-
-    export function notesActives(boolean) {
-        return async function (dispatch) {
-            try {
-                console.log(boolean)
-                const booleanValue = JSON.parse(boolean);
-                const notes = (await axios.get(('http://localhost:3006/api/notes'))).data
-                const stateNotes = notes.filter(note => note.active === booleanValue);
-                return dispatch({
-                    type: GET_STATE_NOTES,
-                    payload: stateNotes
-                })
-            } catch (error) {
-                return dispatch({
-                    type: GET_STATE_NOTES,
-                    payload: error
-                })
-            }
         }
     }
+}
 
 
-    export function emptyNotes() {
-        return function (dispatch) {
-            const data = [];
+export function notesActives(boolean) {
+    return async function (dispatch) {
+        try {
+            console.log(boolean)
+            const booleanValue = JSON.parse(boolean);
+            const notes = (await axios.get(('http://localhost:3006/api/notes'))).data
+            const stateNotes = notes.filter(note => note.active === booleanValue);
             return dispatch({
-                type: EMPTY_ARRAY,
-                payload: data
+                type: GET_STATE_NOTES,
+                payload: stateNotes
+            })
+        } catch (error) {
+            return dispatch({
+                type: GET_STATE_NOTES,
+                payload: error
             })
         }
     }
+}
 
 
-    export function updateNote({ id, tittle, content, categoryId}) {
-        return async function (dispatch) {
-            try {
-                const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { tittle, content, categoryId})).data
-                alert('The note was edited successfully. Click SEE ALL NOTE to see your updated list.');
-            } catch (error) {
-                alert('There was an error editing the note. Please try again.');
-                throw error;
-            }
+export function emptyNotes() {
+    return function (dispatch) {
+        const data = [];
+        return dispatch({
+            type: EMPTY_ARRAY,
+            payload: data
+        })
+    }
+}
+
+
+export function updateNote({ id, tittle, content, categoryId }) {
+    return async function (dispatch) {
+        try {
+            const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { tittle, content, categoryId })).data
+            alert('The note was edited successfully. Click SEE ALL NOTE to see your updated list.');
+        } catch (error) {
+            alert('There was an error editing the note. Please try again.');
+            throw error;
         }
     }
+}
 
 
-    export function editNote(id) {
-        return async function (dispatch) {
-            const edit = 'yes';
+export function editNote(id) {
+    return async function (dispatch) {
+        const edit = 'yes';
+        return dispatch({
+            type: EDIT_NOTE,
+            payload: id
+        }
+        )
+    }
+}
+
+
+export function changeStatus(id, activeBoolean) {
+    return async function (dispatch) {
+        try {
+            const parseActive = JSON.parse(activeBoolean);
+            const active = !parseActive;
+            const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { active })).data
+            if (active === true) {
+                alert('This note has been actived or unarchived.');
+            } else {
+                alert('This note has been archived.');
+            }
             return dispatch({
-                type: EDIT_NOTE,
+                type: CHANGE_STATUS,
                 payload: id
-            }
-            )
+            })
+        } catch (error) {
+            return dispatch({
+                type: CHANGE_STATUS,
+                payload: error
+            })
         }
     }
+}
 
 
-    export function changeStatus(id, activeBoolean) {
-        return async function (dispatch) {
-            try {
-                const parseActive = JSON.parse(activeBoolean);
-                const active = !parseActive;
-                const res = (await axios.put((`http://localhost:3006/api/notes/${id}`), { active })).data
-                if (active === true) {
-                    alert('This note has been actived or unarchived.');
-                } else {
-                    alert('This note has been archived.');
-                }
-                return dispatch({
-                    type: CHANGE_STATUS,
-                    payload: id
-                })
-            } catch (error) {
-                return dispatch({
-                    type: CHANGE_STATUS,
-                    payload: error
-                })
-            }
+export function renderNotes(toggle) {
+    return async function (dispatch) {
+        return dispatch({
+            type: RENDER_NOTES,
+            payload: toggle
         }
+        )
     }
+}
 
 

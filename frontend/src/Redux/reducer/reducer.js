@@ -4,7 +4,8 @@ import {
     GET_NOTES_BY_CATEGORY,
     GET_STATE_NOTES,
     EMPTY_ARRAY,
-    EDIT_NOTE
+    EDIT_NOTE,
+    RENDER_NOTES
 } from "../actions/actions"
 
 const initialState = {
@@ -12,7 +13,8 @@ const initialState = {
     notes: [],
     notesOfCategory: [],
     notesArcOrUnär: [],
-    editNote: ''
+    editNote: '',
+    toggleNew: false
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -48,6 +50,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 editNote: action.payload
+            }
+        case RENDER_NOTES:
+            return {
+                ...state,
+                toggleNew: action.payload
             }
 
         default:
