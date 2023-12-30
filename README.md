@@ -11,7 +11,7 @@
 The script is included in the project folder.
 
 - **Windows**:   ./start.sh
-- **Linux/MacOS**:
+
 
 <br />
 
