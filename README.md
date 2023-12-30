@@ -2,7 +2,7 @@
 
 ## **📌 Introduction**
 
-- **ENSOVERS NOTE APP** is a Single Page Application using the following technologies: **React**, **Redux**, **Node**, **Express**, and **Sequelize**.
+- **ENSOLVERS NOTE APP** is a Single Page Application using the following technologies: **React**, **Redux**, **Node**, **Express**, and **Sequelize**.
 - With styling and design resources (UX: UI) in CSS.
 
 <br />
@@ -18,7 +18,7 @@ The script is included in the project folder.
 ---
 
 ## **⚠️ Necessary chrome://extensions/ ** 
-The following extensions are necessary for the correct visualization of the app:
+The following google extensions are necessary for the correct visualization of the app:
 
 - **Allow CORS: Access-Control-Allow-Origin**
 - **Moesif Origin & CORS Changer**
