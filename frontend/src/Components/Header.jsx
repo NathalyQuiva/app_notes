@@ -18,7 +18,7 @@ const Header = () => {
 
   return (
     <header style={headerStyle}>
-      <h1 style={titleStyle}>MY ENSOLVERS NOTES APP</h1>
+      <h1 style={titleStyle}> NOTES APP</h1>
     </header>
   );
 };
