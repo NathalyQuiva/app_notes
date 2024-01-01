@@ -2,7 +2,7 @@
 
 ## **📌 Introduction**
 
-- **ENSOLVERS NOTE APP** is a Single Page Application using the following technologies: **React**, **Redux**, **Node**, **Express**, and **Sequelize**.
+- ** NOTE APP** is a Single Page Application using the following technologies: **React**, **Redux**, **Node**, **Express**, and **Sequelize**.
 - With styling and design resources (UX: UI) in CSS.
 
 <br />
