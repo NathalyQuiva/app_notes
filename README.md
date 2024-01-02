@@ -26,7 +26,7 @@ The following google extensions are necessary for the correct visualization of t
 
 ---
 
-## ** LOGIN **
+## ** Login **
 
 It is necessary to enter the following username and password to access the application:
 
@@ -74,6 +74,7 @@ npm -v
 <br />
 
 ---
+
 ## ** Command to run in development environment **
 
 **backend:** 
@@ -116,35 +117,29 @@ The RESTApi has the following routes for notes:
 
 ### **📍 GET | /api/notes/actives**
 
-- Obtains an array of objects, where each object is a note that is active.
+- Obtains an array of objects, where each object is a note that is active
 
-### **📍 GET | /api/notes/ archived **
-
-- Obtains an array of objects, where each object is a note that is archived.
-
-
-#### **📍 GET | /api/notes/ archived **
+### **📍 GET | /api/notes/ archived**
 
 - Obtains an array of objects, where each object is a note that is archived.
 
-#### **📍 PUT | /api/notes/reverseActive/:id'**
+### **📍 PUT | /api/notes/reverseActive/:id'**
 
 - This path changes the value of the active key, that is, it changes the status from active to archived or vice versa.
 - The note is received by parameter (ID).
 
-
-#### **📍 POST | /api/notes**
+### **📍 POST | /api/notes**
 
 - This route will receive all the data necessary to create a new note and relate it to the associated notes.
 - All information must be received by body.
 - You must create the note category in the database, and this must be related to the indicated notes (at least one).
 
-#### **📍 PUT | /api/notes/:id **
+### **📍 PUT | /api/notes/:id**
 .
 - This route will receive all the data necessary to edit a note
 - The id must be received by parameter.
 
-#### **📍 DELETE | /api/notes/:id **
+### **📍 DELETE | /api/notes/:id**
 
 - This route will receive all the data necessary to delete a category
 - The id must be received by parameter.
