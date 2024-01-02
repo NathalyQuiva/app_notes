@@ -1,6 +1,9 @@
 import app from './app.js'
-import { sequelize } from './database/database.js'
+//import { sequelize } from './database/database.js'
 import cors from 'cors'
+import initializeDatabase from './database/database.js'
+
+const db = await initializeDatabase();
 
 const corsOptions = {
     origin: 'http://localhost:3000',
@@ -23,7 +26,7 @@ app.set('port', process.env.PORT || 3006);
 
 //Starting database and server
 async function main() {
-    await sequelize.sync({force: false});
+    await db.sync({force: false});
     app.listen(app.get('port'), ()=>{
         console.log(`Listen on port ${app.get('port')}`)
     })

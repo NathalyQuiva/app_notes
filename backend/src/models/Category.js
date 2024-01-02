@@ -1,8 +1,12 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/database.js'
+//import { sequelize } from '../database/database.js'
 import { Note } from './Note.js'
 
-export const Category = sequelize.define('categories', {
+import initializeDatabase from '../database/database.js'
+
+const db = await initializeDatabase();
+
+export const Category = db.define('categories', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

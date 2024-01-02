@@ -1,4 +1,7 @@
 -- 20231229_create_tables.sql
+
+CREATE DATABASE notes;
+
 CREATE TABLE IF NOT EXISTS notes (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),

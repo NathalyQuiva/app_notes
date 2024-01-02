@@ -7,8 +7,7 @@
 
 <br />
 
-## **⚠️ SCRIPTS ** 
-The script is included in the project folder.
+## ** Scripts ** 
 
 - **Windows**:   ./start.sh
 
@@ -17,7 +16,7 @@ The script is included in the project folder.
 
 ---
 
-## **⚠️ Necessary chrome://extensions/ ** 
+## ** Necessary chrome://extensions/ ** 
 The following google extensions are necessary for the correct visualization of the app:
 
 - **Allow CORS: Access-Control-Allow-Origin**
@@ -27,7 +26,7 @@ The following google extensions are necessary for the correct visualization of t
 
 ---
 
-## **⚠️ LOGIN **
+## ** LOGIN **
 
 It is necessary to enter the following username and password to access the application:
 
@@ -36,11 +35,9 @@ It is necessary to enter the following username and password to access the appli
 
 <br />
 
-
-
 ---
 
-## **⚠️ DEPENDENCIAS UTILIZADAS **
+## ** Dependencies Used **
 
 It is necessary to have the following versions to be able to correctly install the dependencies necessary to run the project. Currently the required versions are:
 
@@ -77,7 +74,7 @@ npm -v
 <br />
 
 ---
-## **⚠️ COMMAND TO RUN IN DEVELOPMENT ENVIRONMENT **
+## ** Command to run in development environment **
 
 **backend:** 
 
@@ -85,7 +82,7 @@ npm -v
 npm run dev
 ```
 
-**backend:** 
+**frontend:** 
 
 ```bash
 npm run start
@@ -96,32 +93,32 @@ npm run start
 ---
 
 
-### **🖱 BASE DE DATOS**
+### **🖱 Database**
 
 
-Two models were created for my database called 'notes' and within it two models with a one-to-many relationship.
+This project uses a relational database (PostgreSQL), ORM Sequelize and various relationships.
 
 
 ---
 
 <br />
 
-### **🖱 BACK-END**
+### ** RESTFul API **
 
-Built a RESTApi server using **NodeJS** and **Express**. Which is connected to the PostgreSQL relational database through the **Sequelize** ORM.
+Built a RESTApi server using **NodeJS** and **Express**.
 
 
 The RESTApi has the following routes for notes:
 
-#### **📍 GET | /api/notes**
+### **📍 GET | /api/notes**
 
 - Gets an array of objects, where each object is a note
 
-#### **📍 GET | /api/notes/actives**
+### **📍 GET | /api/notes/actives**
 
 - Obtains an array of objects, where each object is a note that is active.
 
-#### **📍 GET | /api/notes/ archived **
+### **📍 GET | /api/notes/ archived **
 
 - Obtains an array of objects, where each object is a note that is archived.
 

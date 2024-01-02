@@ -1,7 +1,9 @@
 import { DataTypes } from 'sequelize'
-import { sequelize } from '../database/database.js'
+import initializeDatabase from '../database/database.js'
 
-export const Note = sequelize.define('notes', {
+const db = await initializeDatabase();
+
+export const Note = db.define('notes', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
