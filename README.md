@@ -23,7 +23,7 @@ The following google extensions are necessary for the correct visualization of t
 
 <br /> -->
 
----
+
 
 ## ** Login **
 
@@ -34,7 +34,6 @@ It is necessary to enter the following username and password to access the appli
 
 <br />
 
----
 
 ## ** Dependencies Used **
 
@@ -60,7 +59,7 @@ npm -v
 
 <br />
 
----
+
 
 **frontend:** The current dependencies are located in the package.json folder of the React project called: frontend used during the realization of this project:
 - **axios**: 1.6.3
@@ -72,7 +71,7 @@ npm -v
 
 <br />
 
----
+
 
 ## ** Command to run in development environment **
 
@@ -90,7 +89,7 @@ npm run start
 
 <br />
 
----
+
 
 
 ### **🖱 Database**
@@ -99,7 +98,6 @@ npm run start
 This project uses a relational database (PostgreSQL), ORM Sequelize and various relationships.
 
 
----
 
 <br />
 
