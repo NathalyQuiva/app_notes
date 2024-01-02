@@ -92,7 +92,7 @@ npm run start
 
 
 
-### **🖱 Database**
+### ** 🖱 Database **
 
 
 This project uses a relational database (PostgreSQL), ORM Sequelize and various relationships.
@@ -102,7 +102,7 @@ This project uses a relational database (PostgreSQL), ORM Sequelize and various 
 <br />
 
 ### ** RESTFul API **
-.
+
 Built a RESTApi server using **NodeJS** and **Express**.
 
 
