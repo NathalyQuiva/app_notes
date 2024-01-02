@@ -143,7 +143,7 @@ The RESTApi has the following routes for notes:
 
 <br />
 
-.
+
 
 The RESTApi has the following routes for the categories:
 
@@ -179,7 +179,7 @@ The RESTApi has the following routes for the categories:
 
 <br />
 
---
+<br />
 
 ## **If you need more information about this project, do not hesitate to [contact me](https://www.linkedin.com/in/nathalyquiva/ "LinkedIn profile").**
 
