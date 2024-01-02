@@ -105,44 +105,44 @@ This project uses a relational database (PostgreSQL), ORM Sequelize and various 
 <br />
 
 ### ** RESTFul API **
-
+.
 Built a RESTApi server using **NodeJS** and **Express**.
 
 
 The RESTApi has the following routes for notes:
 
-### **📍 GET | /api/notes**
+#### **📍 GET | /api/notes**
 
 - Gets an array of objects, where each object is a note
 
-### **📍 GET | /api/notes/actives**
+#### **📍 GET | /api/notes/actives**
 
 - Obtains an array of objects, where each object is a note that is active
 
-### **📍 GET | /api/notes/ archived**
+#### **📍 GET | /api/notes/ archived**
 
 - Obtains an array of objects, where each object is a note that is archived.
 
-### **📍 PUT | /api/notes/reverseActive/:id'**
+#### **📍 PUT | /api/notes/reverseActive/:id'**
 
 - This path changes the value of the active key, that is, it changes the status from active to archived or vice versa.
 - The note is received by parameter (ID).
 
-### **📍 POST | /api/notes**
+#### **📍 POST | /api/notes**
 
 - This route will receive all the data necessary to create a new note and relate it to the associated notes.
 - All information must be received by body.
 - You must create the note category in the database, and this must be related to the indicated notes (at least one).
 
-### **📍 PUT | /api/notes/:id**
-.
-- This route will receive all the data necessary to edit a note
-- The id must be received by parameter.
+#### **📍 PUT | /api/notes/:id**
 
-### **📍 DELETE | /api/notes/:id**
+- This route will receive all the data necessary to edit a note
+- The id must be received by parameter
+
+#### **📍 DELETE | /api/notes/:id**
 
 - This route will receive all the data necessary to delete a category
-- The id must be received by parameter.
+- The id must be received by parameter
 
 <br />
 
@@ -163,19 +163,19 @@ The RESTApi has the following routes for the categories:
 
 - This route obtains all the notes that are related to a specific category and receives the id of the category for which you want to know the notes.
 
-#### **📍 POST | /api/categories **
+#### **📍 POST | /api/categories**
 
 - This route will receive all the data necessary to create a new category and relate it to the associated notes.
 - All information must be received by body.
 - You must create the note category in the database, and this must be related to the indicated notes (at least one).
 
 
-#### **📍 PUT | /api/categories/:id **
+#### **📍 PUT | /api/categories/:id**
 
 - This route will receive all the data necessary to edit a category
 - The id must be received by parameter.
 
-#### **📍 DELETE | /api/categories/:id **
+#### **📍 DELETE | /api/categories/:id**
 
 - This route will receive all the data necessary to delete a category
 - The id must be received by parameter.
