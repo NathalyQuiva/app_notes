@@ -14,7 +14,6 @@
 
 <br />
 
----
 <!-- 
 ## ** Necessary chrome://extensions/ ** 
 The following google extensions are necessary for the correct visualization of the app:
