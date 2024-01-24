@@ -12,20 +12,27 @@ export const RENDER_NOTES = 'RENDER_NOTES';
 
 export function getAllCategories() {
     return async function (dispatch) {
-        try {
-            const res = await axios.get('http://localhost:3006/api/categories')
-            return dispatch({
-                type: GET_ALL_CATEGORIES,
-                payload: res.data
-            })
-        } catch (error) {
-            return dispatch({
-                type: GET_ALL_CATEGORIES,
-                payload: error
-            })
-        }
-    }
-}
+        const res = await axios.get('http://localhost:3006/api/categories')
+        return dispatch({
+            type: GET_ALL_CATEGORIES,
+            payload: res.data
+
+        })}}
+
+        // try {
+
+        //     const res = await axios.get('http://localhost:3006/api/categories')
+        //     return dispatch({
+        //         type: GET_ALL_CATEGORIES,
+        //         payload: res.data
+        //     })
+        // } catch (error) {
+        //    return dispatch({
+        //         type: GET_ALL_CATEGORIES,
+        //         payload: error
+        //     })
+        // }
+   
 
 
 export function getAllNotes() {
@@ -39,7 +46,7 @@ export function getAllNotes() {
         } catch (error) {
             return dispatch({
                 type: GET_ALL_NOTES,
-                payload: error
+                payload: error.res.data
             })
         }
     }
@@ -85,7 +92,7 @@ export function searchByCategory(catId) {
         } catch (error) {
             return dispatch({
                 type: GET_NOTES_BY_CATEGORY,
-                payload: error
+                payload: error.notes
             })
         }
     }

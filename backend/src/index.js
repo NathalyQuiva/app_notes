@@ -1,5 +1,4 @@
 import app from './app.js'
-//import { sequelize } from './database/database.js'
 import cors from 'cors'
 import initializeDatabase from './database/database.js'
 
