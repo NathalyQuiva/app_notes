@@ -7,7 +7,9 @@
 
 ## **🎥 Video Demo**
 
-[![Video Demo](https://drive.google.com/uc?export=view&id=1pS9UE11Q7Wl8S765wJTjjpbpRK-iIGRR)](https://drive.google.com/file/d/1pS9UE11Q7Wl8S765wJTjjpbpRK-iIGRR/view?usp=sharing)
+[![Click to Watch Video](frontend/src/images/notes%20app1%20.jpg)](https://drive.google.com/file/d/1pS9UE11Q7Wl8S765wJTjjpbpRK-iIGRR/view?usp=sharing)
+
+Click on the image to watch the video demo.
 
 Click on the image to watch the video demo.
 
