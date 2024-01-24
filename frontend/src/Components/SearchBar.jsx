@@ -66,8 +66,7 @@ const SearchBar = () => {
         {toggleNew === false && <button style={buttonStyle2} onClick={handleToggle}>SEE ALL NOTES</button>}
         {toggleNew === true && <button style={buttonStyle2} onClick={handleToggle}>CLOSE LIST</button>}
       </div>
-      <label style={labelStyle}>A
-      rchive/Unarchive Notes:</label>
+      <label style={labelStyle}>Archive/Unarchive Notes:</label>
       <select onChange={handleArchive} style={selectStyle}>
         <option value="false" >Archived Notes</option>
         <option value="true">Actives Notes</option>

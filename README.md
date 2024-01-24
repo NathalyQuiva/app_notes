@@ -98,7 +98,6 @@ npm run start
 This project uses a relational database (PostgreSQL), ORM Sequelize and various relationships.
 
 
-
 <br />
 
 ## ** RESTFul API **
